@@ -21,21 +21,23 @@ async function build_client(){
     });
 }
 
-build_client();
-if(DEV){
-    derver({
-        dir: 'public',
-        port: 5000,
-        watch:['public','src'],
-        onwatch: async (lr,item)=>{
-            if(item == 'src'){
-                lr.prevent();
-                try{
-                    await build_client();
-                }catch(err){
-                    lr.error(err.message,'Svelte compile error')
+
+build_client().then(bundle => {
+    if(DEV){
+        derver({
+            dir: 'public',
+            port: 5000,
+            watch:['public','src'],
+            onwatch: async (lr,item)=>{
+                if(item == 'src'){
+                    lr.prevent();
+                    try{
+                        await bundle.rebuild();
+                    }catch(err){
+                        lr.error(err.message,'Svelte compile error')
+                    }
                 }
             }
-        }
-    })
-}
+        })
+    }
+});
