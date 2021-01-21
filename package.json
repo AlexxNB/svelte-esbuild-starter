@@ -1,0 +1,33 @@
+{
+  "name": "svelte-esbuild-starter",
+  "version": "0.1.0",
+  "description": "Starter for new Svelte application with ESBuild bundler ",
+  "main": "index.js",
+  "scripts": {
+    "build": "node esbuild",
+    "dev": "node esbuild --dev",
+    "start": "npx derver --production --port=5000 public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexxNB/svelte-esbuild-starter.git"
+  },
+  "keywords": [
+    "svelte",
+    "starter",
+    "derver",
+    "esbuild"
+  ],
+  "author": "Alexey Schebelev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexxNB/svelte-esbuild-starter/issues"
+  },
+  "homepage": "https://github.com/AlexxNB/svelte-esbuild-starter#readme",
+  "devDependencies": {
+    "derver": "^0.4.11",
+    "esbuild": "^0.8.33",
+    "esbuild-svelte": "^0.4.0",
+    "svelte": "^3.31.2"
+  }
+}
