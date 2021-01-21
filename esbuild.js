@@ -9,6 +9,7 @@ async function build_client(){
         entryPoints: ['src/main.js'],
         bundle: true,
         outfile: 'public/build/bundle.js',
+        mainFields: ['svelte','module','main'],
         sourcemap: DEV && 'inline',
         minify: !DEV,
         incremental: DEV,
