@@ -4,6 +4,12 @@ const sveltePlugin = require("esbuild-svelte");
 
 const DEV = process.argv.includes('--dev');
 
+// Development server configuration. To configure production server
+// see `start` script in `package.json` file.
+
+const HOST = 'localhost';
+const PORT = 5000;
+
 async function build_client(){
     return await build({
         entryPoints: ['src/main.js'],
@@ -14,10 +20,19 @@ async function build_client(){
         minify: !DEV,
         incremental: DEV,
         plugins: [
-            sveltePlugin({compileOptions:{
-                dev: DEV,
-                css: false
-            }})
+            sveltePlugin({
+
+                compileOptions:{
+                    // Svelte compile options
+                    dev: DEV,
+                    css: false  //use `css:true` to inline CSS in `bundle.js`
+                },
+                
+                preprocessor:[
+                    // Place here any Svelte preprocessors
+                ]
+                
+            })
         ]
     });
 }
@@ -27,7 +42,8 @@ build_client().then(bundle => {
     if(DEV){
         derver({
             dir: 'public',
-            port: 5000,
+            host: HOST,
+            port: PORT,
             watch:['public','src'],
             onwatch: async (lr,item)=>{
                 if(item == 'src'){
