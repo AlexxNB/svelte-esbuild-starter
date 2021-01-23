@@ -1,6 +1,6 @@
 {
   "name": "svelte-esbuild-starter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Starter for new Svelte application with ESBuild bundler ",
   "main": "index.js",
   "scripts": {

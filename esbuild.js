@@ -16,9 +16,9 @@ async function build_client(){
         bundle: true,
         outfile: 'public/build/bundle.js',
         mainFields: ['svelte','module','main'],
-        sourcemap: DEV && 'inline',
         minify: !DEV,
         incremental: DEV,
+        sourcemap: DEV && 'inline',  
         plugins: [
             sveltePlugin({
 
@@ -39,8 +39,7 @@ async function build_client(){
 
 
 build_client().then(bundle => {
-    if(DEV){
-        derver({
+        DEV && derver({
             dir: 'public',
             host: HOST,
             port: PORT,
@@ -48,13 +47,8 @@ build_client().then(bundle => {
             onwatch: async (lr,item)=>{
                 if(item == 'src'){
                     lr.prevent();
-                    try{
-                        await bundle.rebuild();
-                    }catch(err){
-                        lr.error(err.message,'Svelte compile error')
-                    }
+                    bundle.rebuild().catch(err => lr.error(err.message,'Svelte compile error'));
                 }
             }
         })
-    }
 });
