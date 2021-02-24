@@ -26,8 +26,8 @@
   "homepage": "https://github.com/AlexxNB/svelte-esbuild-starter#readme",
   "devDependencies": {
     "derver": "^0.4.12",
-    "esbuild": "^0.8.34",
-    "esbuild-svelte": "^0.4.0",
-    "svelte": "^3.31.2"
+    "esbuild": "^0.8.51",
+    "esbuild-svelte": "^0.4.2",
+    "svelte": "^3.32.3"
   }
 }
