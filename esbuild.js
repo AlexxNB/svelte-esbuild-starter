@@ -1,4 +1,4 @@
-const { build } = require("esbuild");
+const esbuild = require("esbuild");
 const { derver } = require("derver");
 const sveltePlugin = require("esbuild-svelte");
 
@@ -10,8 +10,8 @@ const DEV = process.argv.includes('--dev');
 const HOST = 'localhost';
 const PORT = 5000;
 
-async function build_client(){
-    return await build({
+esbuild.build({
+        // esbuild configuration
         entryPoints: ['src/main.js'],
         bundle: true,
         outfile: 'public/build/bundle.js',
@@ -28,17 +28,14 @@ async function build_client(){
                     css: false  //use `css:true` to inline CSS in `bundle.js`
                 },
                 
-                preprocessor:[
+                preprocess:[
                     // Place here any Svelte preprocessors
                 ]
                 
             })
         ]
-    });
-}
 
-
-build_client().then(bundle => {
+    }).then(bundle => {
         DEV && derver({
             dir: 'public',
             host: HOST,
@@ -52,3 +49,4 @@ build_client().then(bundle => {
             }
         })
 });
+
