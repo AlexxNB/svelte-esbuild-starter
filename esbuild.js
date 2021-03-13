@@ -18,7 +18,7 @@ esbuild.build({
         mainFields: ['svelte','module','main'],
         minify: !DEV,
         incremental: DEV,
-        sourcemap: DEV && 'inline',  
+        sourcemap: DEV,  // Use `DEV && 'inline'` to inline sourcemaps to the bundle
         plugins: [
             sveltePlugin({
 
