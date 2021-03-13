@@ -1,6 +1,6 @@
 {
   "name": "svelte-esbuild-starter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Starter for new Svelte application with ESBuild bundler ",
   "main": "index.js",
   "scripts": {
@@ -25,9 +25,9 @@
   },
   "homepage": "https://github.com/AlexxNB/svelte-esbuild-starter#readme",
   "devDependencies": {
-    "derver": "^0.4.12",
-    "esbuild": "^0.8.51",
-    "esbuild-svelte": "^0.4.2",
-    "svelte": "^3.32.3"
+    "derver": "^0.4.13",
+    "esbuild": "^0.8.57",
+    "esbuild-svelte": "^0.4.3",
+    "svelte": "^3.35.0"
   }
 }
